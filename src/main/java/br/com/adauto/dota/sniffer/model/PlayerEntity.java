@@ -10,15 +10,18 @@ import lombok.Setter;
 @Table(name = "players")
 public class PlayerEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+    private Long accountId;
     private Integer soloCompetitiveRank;
     private Integer competitiveRank;
     private Integer rankTier;
     private Integer leaderboardRank;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    private ProfileEntity profile;
+    private String personaname;
+    private String name;
+    private String steamid;
+    private String avatar;
+    private String avatarmedium;
+    private String avatarfull;
+    private String profileurl;
+    private String lastLogin;
+    private String loccountrycode;
 }

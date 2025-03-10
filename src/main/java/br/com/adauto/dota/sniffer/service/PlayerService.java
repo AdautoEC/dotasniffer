@@ -25,7 +25,7 @@ public class PlayerService {
     public PlayerEntity getPlayerById(Long id){
         PlayerResponse playerResponse = openDotaClient.getPlayerById(id);
         PlayerEntity playerEntity = playerMapper.toEntity(playerResponse);
-        if(playerEntity.getProfile().getAccountId() == null) playerEntity.getProfile().setAccountId(id);
+        playerEntity.setAccountId(id);
         return playerRepository.save(playerEntity);
     }
 

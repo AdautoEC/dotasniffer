@@ -1,11 +1,9 @@
 package br.com.adauto.dota.sniffer.controller;
 
 import br.com.adauto.dota.sniffer.model.PlayerEntity;
+import br.com.adauto.dota.sniffer.model.PlayerMatchesEntity;
 import br.com.adauto.dota.sniffer.service.PlayerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +23,15 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public PlayerEntity getAllPlayerSaved(@PathVariable Long id) {
+    public PlayerEntity getPlayerById(@PathVariable Long id) {
         return playerService.getPlayerById(id);
+    }
+
+    @GetMapping("/{id}/matches")
+    public List<PlayerMatchesEntity> getPlayerMatchesById(
+            @PathVariable Long id,
+            @RequestParam Integer date
+    ) {
+        return playerService.getPlayerMatchesById(id, date);
     }
 }
